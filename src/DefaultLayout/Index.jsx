@@ -6,6 +6,7 @@ import { Container } from "reactstrap";
 import PostArchive from "../Views/PostArchive/PostArchive";
 import PostSingle from "../Views/PostSingle/PostSingle";
 import UsersTable from "../Views/Users/UsersTable";
+import UserSingle from "../Views/UserSingle/UserSingle";
 
 function Index() {
   return (
@@ -13,7 +14,6 @@ function Index() {
       <Header />
       <Container>
         <Switch>
-          <Route path="/users/:id"></Route>
           <Route path="/posts/:id">
             <PostSingle />
           </Route>
@@ -22,6 +22,9 @@ function Index() {
           </Route>
           <Route exact path="/users">
             <UsersTable />
+          </Route>
+          <Route exact path="/users/:id">
+            <UserSingle />
           </Route>
           <Route exact path="/todos"></Route>
           <Route exact path="/"></Route>

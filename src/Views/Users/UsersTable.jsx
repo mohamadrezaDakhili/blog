@@ -2,9 +2,11 @@ import React, { useEffect } from "react";
 import { useState } from "react";
 import Axios from "axios";
 import { Table } from "reactstrap";
+import { useHistory } from "react-router-dom";
 
 function UsersTable() {
   const [users, setUsers] = useState([]);
+  let history = useHistory();
   const getUsers = () => {
     Axios.get("https://jsonplaceholder.typicode.com/users").then((res) =>
       setUsers(res.data)
@@ -26,12 +28,16 @@ function UsersTable() {
         </thead>
         <tbody>
           {users.map((user) => (
-            <tr key={user.id}>
-              <th>{user.id}</th>
-              <th>{user.username}</th>
-              <th>{user.name}</th>
-              <th>{user.email}</th>
-              <th>{user.website}</th>
+            <tr
+              style={{ cursor: "pointer" }}
+              onClick={() => history.push("/users/" + user.id)}
+              key={user.id}
+            >
+              <td>{user.id}</td>
+              <td>{user.username}</td>
+              <td>{user.name}</td>
+              <td>{user.email}</td>
+              <td>{user.website}</td>
             </tr>
           ))}
         </tbody>
