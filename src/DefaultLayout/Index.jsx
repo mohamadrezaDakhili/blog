@@ -4,6 +4,8 @@ import Footer from "./Footer";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { Container } from "reactstrap";
 import PostArchive from "../Views/PostArchive/PostArchive";
+import PostSingle from "../Views/PostSingle/PostSingle";
+import UsersTable from "../Views/Users/UsersTable";
 
 function Index() {
   return (
@@ -12,17 +14,20 @@ function Index() {
       <Container>
         <Switch>
           <Route path="/users/:id"></Route>
-          <Route path="/posts/:id">{/* <PostSingle /> */}</Route>
+          <Route path="/posts/:id">
+            <PostSingle />
+          </Route>
           <Route exact path="/posts">
             <PostArchive />
           </Route>
           <Route exact path="/users">
-            {/* <Users /> */}
+            <UsersTable />
           </Route>
           <Route exact path="/todos"></Route>
           <Route exact path="/"></Route>
         </Switch>
       </Container>
+      <Footer />
     </Router>
   );
 }
